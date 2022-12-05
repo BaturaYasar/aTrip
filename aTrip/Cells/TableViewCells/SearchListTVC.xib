@@ -25,17 +25,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1OB-tS-MYY">
                                 <rect key="frame" x="0.0" y="0.0" width="352" height="170"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marina Bay" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRe-wj-21g">
-                                        <rect key="frame" x="16" y="60" width="320" height="35"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marina Bay" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRe-wj-21g">
+                                        <rect key="frame" x="16" y="60" width="320" height="24"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="EwC-23-ELn"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="EwC-23-ELn"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Singapore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGd-3P-5ab">
-                                        <rect key="frame" x="16" y="95" width="320" height="35"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGd-3P-5ab">
+                                        <rect key="frame" x="16" y="84" width="320" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="uL2-kP-0aD"/>
                                         </constraints>
@@ -101,9 +101,9 @@
             <connections>
                 <outlet property="backBlackView" destination="1OB-tS-MYY" id="11d-wM-p1e"/>
                 <outlet property="backView" destination="Kvk-rc-mOF" id="Q1X-P4-cZw"/>
-                <outlet property="cityLabel" destination="ZRe-wj-21g" id="YAB-CH-krX"/>
-                <outlet property="countryLabel" destination="BGd-3P-5ab" id="s1y-iF-tt5"/>
+                <outlet property="nameLabel" destination="ZRe-wj-21g" id="JGF-ay-Ehb"/>
                 <outlet property="orangeBack" destination="0cB-Ta-7oY" id="3Mh-Ca-3IC"/>
+                <outlet property="priceLabel" destination="BGd-3P-5ab" id="NS5-qz-806"/>
                 <outlet property="searchImage" destination="xDM-84-fib" id="rI2-lj-vRX"/>
             </connections>
             <point key="canvasLocation" x="151.14503816793894" y="36.619718309859159"/>

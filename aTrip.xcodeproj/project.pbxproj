@@ -19,6 +19,7 @@
 		66D671F6292CFBE500A2B419 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D671F4292CFBE500A2B419 /* Main.storyboard */; };
 		66D671F8292CFBE600A2B419 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66D671F7292CFBE600A2B419 /* Assets.xcassets */; };
 		66D671FB292CFBE600A2B419 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D671F9292CFBE600A2B419 /* LaunchScreen.storyboard */; };
+		66DD560F293E612E0090EA73 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DD560E293E612E0090EA73 /* UIImage+Ext.swift */; };
 		66E1E90B292D007E005C575C /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1E90A292D007E005C575C /* SearchVC.swift */; };
 		66E1E90D292D00AD005C575C /* BookmarksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1E90C292D00AD005C575C /* BookmarksVC.swift */; };
 		66E1E910292D28A4005C575C /* HotelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E1E90F292D28A3005C575C /* HotelVC.swift */; };
@@ -44,6 +45,7 @@
 		66D671F7292CFBE600A2B419 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66D671FA292CFBE600A2B419 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		66D671FC292CFBE600A2B419 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66DD560E293E612E0090EA73 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		66E1E90A292D007E005C575C /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		66E1E90C292D00AD005C575C /* BookmarksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksVC.swift; sourceTree = "<group>"; };
 		66E1E90F292D28A3005C575C /* HotelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelVC.swift; sourceTree = "<group>"; };
@@ -83,8 +85,8 @@
 		66150B3329314A4A00AB6122 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				66150B3429314A7800AB6122 /* PropertyAPI.swift */,
-				66150B3729314A8800AB6122 /* NetworkManager.swift */,
+				66DD5610293E70EA0090EA73 /* HotelAPI */,
+				66DD5611293E70F70090EA73 /* FlightAPI */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -135,6 +137,7 @@
 			children = (
 				66150B3F29314E0700AB6122 /* Model */,
 				66150B3329314A4A00AB6122 /* Network */,
+				66150B3729314A8800AB6122 /* NetworkManager.swift */,
 				66E1E918292D38D3005C575C /* Extentions */,
 				66E7E94C292D828A003350A8 /* Cells */,
 				66E1E909292D0004005C575C /* Scenes */,
@@ -143,6 +146,21 @@
 				66150B3129314A0200AB6122 /* Helpers */,
 			);
 			path = aTrip;
+			sourceTree = "<group>";
+		};
+		66DD5610293E70EA0090EA73 /* HotelAPI */ = {
+			isa = PBXGroup;
+			children = (
+				66150B3429314A7800AB6122 /* PropertyAPI.swift */,
+			);
+			path = HotelAPI;
+			sourceTree = "<group>";
+		};
+		66DD5611293E70F70090EA73 /* FlightAPI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FlightAPI;
 			sourceTree = "<group>";
 		};
 		66E1E909292D0004005C575C /* Scenes */ = {
@@ -180,6 +198,7 @@
 			children = (
 				66E1E919292D38E8005C575C /* NSObject+Ext.swift */,
 				66E7E952292D8A07003350A8 /* UIView+Ext.swift */,
+				66DD560E293E612E0090EA73 /* UIImage+Ext.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -292,6 +311,7 @@
 				66E1E90D292D00AD005C575C /* BookmarksVC.swift in Sources */,
 				66D671F3292CFBE500A2B419 /* MainVC.swift in Sources */,
 				66E1E916292D3618005C575C /* MainCollectionVC.swift in Sources */,
+				66DD560F293E612E0090EA73 /* UIImage+Ext.swift in Sources */,
 				66E1E912292D28B7005C575C /* FlightVC.swift in Sources */,
 				66E7E950292D82BF003350A8 /* SearchListTVC.swift in Sources */,
 				66D671EF292CFBE500A2B419 /* AppDelegate.swift in Sources */,

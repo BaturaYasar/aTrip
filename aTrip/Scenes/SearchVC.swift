@@ -14,10 +14,52 @@ class SearchVC: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var searchLabel: UILabel!
+    var propertlyListResponse: PropertyListResponse?
+    var filteredData: [Property]?
+    var isFiltered:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         setupTextField()
+        getHotelsInfo()
+        
+        searchTextField.addTarget(self, action: #selector(textChanged(_:)), for: .editingChanged)
+    }
+    
+    @objc func textChanged(_ textField:UITextField) {
+        let text = textField.text ?? ""
+        let data = propertlyListResponse?.data?.propertySearch?.properties?.filter({ term in
+            if let name = term.name {
+               return name.lowercased().contains(text.lowercased())
+            }
+            return false
+        })
+        self.filteredData = data
+        if textField.text == nil || textField.text == "" {
+            isFiltered = false
+        }else {
+            isFiltered = true
+        }
+        reloadTableView()
+    }
+    
+    func getHotelsInfo() {
+        let destination = Destination(regionID: "6054439")
+        let checkDate = CheckDate(typename: nil, day: 10, month: 10, year: 2022)
+        let checkOutDate = CheckDate(typename: nil, day: 15, month: 10, year: 2022)
+        let filters = Filters(price: Price(max: 150, min: 100))
+        let rooms = Room(adults: 1)
+        let req = PropertyListRequest(currency: "USD", eapid: 1, locale: "en_US", siteID: 300000001, destination: destination, checkInDate: checkDate, checkOutDate: checkOutDate, rooms: [rooms], resultsStartingIndex: 0, resultsSize: 200, sort: "PRICE_LOW_TO_HIGH", filters: filters)
+        NetworkManager.shared.propertyList(request: req) { result in
+            switch result {
+            case .success(let response):
+                self.propertlyListResponse = response
+                self.reloadTableView()
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     func setupTextField() {
@@ -38,6 +80,12 @@ class SearchVC: UIViewController {
         button1.isSelected = notSelected
     }
     
+    fileprivate func reloadTableView() {
+        DispatchQueue.main.async {
+            self.searchTableView.reloadData()
+        }
+    }
+    
 
     @IBAction func searchHotelButtonTapped(_ sender: Any) {
         isSelected(button: hotelButton, button1: flightButton, isSelected: true, notSelected: false)
@@ -52,11 +100,21 @@ class SearchVC: UIViewController {
 
 extension SearchVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if isFiltered {
+            return filteredData?.count ?? 0
+        }else {
+            return propertlyListResponse?.data?.propertySearch?.properties?.count ?? 0
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = searchTableView.dequeueReusableCell(withIdentifier: SearchListTVC.identifier, for: indexPath) as! SearchListTVC
+        if isFiltered {
+            cell.configureUI(property: filteredData?[indexPath.row])
+        }else {
+            cell.configureUI(property: propertlyListResponse?.data?.propertySearch?.properties?[indexPath.row])
+        }
         
         return cell
     }
