@@ -1,4 +1,4 @@
-//
+
 //  SearchVC.swift
 //  aTrip
 //
@@ -7,51 +7,83 @@
 
 import UIKit
 
-class SearchVC: UIViewController {
+enum SearchListPageType {
+    case hotel
+    case carRental
+}
 
+class SearchVC: UIViewController {
+    
     @IBOutlet weak var hotelButton: UIButton!
     @IBOutlet weak var flightButton: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var searchLabel: UILabel!
     var propertlyListResponse: PropertyListResponse?
-    var filteredData: [Property]?
+    var filteredData = ([DataResult](), [SearchResult]())
     var isFiltered:Bool = false
+    var searchListPageType: SearchListPageType = .hotel
+    var carRentalListResponse: CarRentalResponse?
+    var isFilteredRentCar: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         setupTextField()
         getHotelsInfo()
-        
+        getCarRentalInfo()
         searchTextField.addTarget(self, action: #selector(textChanged(_:)), for: .editingChanged)
     }
     
     @objc func textChanged(_ textField:UITextField) {
         let text = textField.text ?? ""
-        let data = propertlyListResponse?.data?.propertySearch?.properties?.filter({ term in
-            if let name = term.name {
-               return name.lowercased().contains(text.lowercased())
+        if searchListPageType == .hotel {
+            let data = propertlyListResponse?.result?.filter({ resultData in
+                if let name = resultData.hotelNameTrans {
+                    return name.lowercased().contains(text.lowercased())
+                }
+                return false
+            })
+            self.filteredData.0 = data ?? []
+            if textField.text == nil || textField.text == "" {
+                isFiltered = false
+            }else {
+                isFiltered = true
             }
-            return false
-        })
-        self.filteredData = data
-        if textField.text == nil || textField.text == "" {
-            isFiltered = false
         }else {
-            isFiltered = true
+            let data = carRentalListResponse?.searchResults?.filter({ resultData in
+                if let name = resultData.vehicleInfo?.vName {
+                        return name.lowercased().contains(text.lowercased())
+                    }
+                    return false
+                })
+            self.filteredData.1 = data ?? []
+                if textField.text == nil || textField.text == "" {
+                    isFiltered = false
+                }else {
+                    isFiltered = true
+                }
         }
+        
         reloadTableView()
+    }
+//    pick_up_longitude=32.85127&from_country=tr&pick_up_latitude=37.655285&currency=TRY&drop_off_datetime=2023-02-27%2009%3A00%3A00&locale=tr&sort_by=recommended&drop_off_latitude=39.91235&pick_up_datetime=2023-02-26%2009%3A00%3A00&drop_off_longitude=32.85127"
+    
+    func getCarRentalInfo() {
+        let request = CarRentalRequest(pick_up_longitude: 32.85127, pick_up_latitude: 37.655285, from_country: "tr", currency: "TRY", drop_off_datetime: "2023-02-27 09:00:00", locale: "tr", sort_by: "recommended", drop_off_latitude: 37.655285, pick_up_datetime: "2023-02-26 09:00:00", drop_off_longitude: 32.85127)
+        NetworkManager.shared.carRentalList(request: request, completition: { result in
+            switch result {
+            case .success(let response):
+                self.carRentalListResponse = response
+            case .failure(let error):
+                print(error)
+            }
+        })
     }
     
     func getHotelsInfo() {
-        let destination = Destination(regionID: "6054439")
-        let checkDate = CheckDate(typename: nil, day: 10, month: 10, year: 2022)
-        let checkOutDate = CheckDate(typename: nil, day: 15, month: 10, year: 2022)
-        let filters = Filters(price: Price(max: 150, min: 100))
-        let rooms = Room(adults: 1)
-        let req = PropertyListRequest(currency: "USD", eapid: 1, locale: "en_US", siteID: 300000001, destination: destination, checkInDate: checkDate, checkOutDate: checkOutDate, rooms: [rooms], resultsStartingIndex: 0, resultsSize: 200, sort: "PRICE_LOW_TO_HIGH", filters: filters)
-        NetworkManager.shared.propertyList(request: req) { result in
+        let request = PropertyListRequest(room_number: 1, dest_type: "city", order_by: "popularity", dest_id: -735338, locale: "tr", checkin_date: "2023-05-27", filter_by_currency: "TRY", checkout_date: "2023-05-28", adults_number: 1, units: "metric", include_adjacency: false, page_number: 0)
+        NetworkManager.shared.propertyList(request: request, completition: { result in
             switch result {
             case .success(let response):
                 self.propertlyListResponse = response
@@ -59,13 +91,17 @@ class SearchVC: UIViewController {
             case .failure(let error):
                 print(error)
             }
-        }
+        })
     }
+    
+    func cleansingTextField() {
+        searchTextField.text = nil
+    }
+    
+    
     
     func setupTextField() {
         searchTextField.delegate = self
-        
-        
     }
     
     func setupTableView() {
@@ -80,40 +116,67 @@ class SearchVC: UIViewController {
         button1.isSelected = notSelected
     }
     
+    
+    
     fileprivate func reloadTableView() {
         DispatchQueue.main.async {
             self.searchTableView.reloadData()
         }
     }
     
-
+    
+    
+    
     @IBAction func searchHotelButtonTapped(_ sender: Any) {
+        cleansingTextField()
+        isFiltered = false
         isSelected(button: hotelButton, button1: flightButton, isSelected: true, notSelected: false)
-        
+        searchListPageType = .hotel
+        reloadTableView()
     }
-    @IBAction func searchFlightButtonTapped(_ sender: Any) {
+    @IBAction func searchRentingCarButtonTapped(_ sender: Any) {
+        cleansingTextField()
+        isFiltered = false
         isSelected(button: flightButton, button1: hotelButton, isSelected: true, notSelected: false)
-        
+        searchListPageType = .carRental
+        reloadTableView()
     }
-
+    
 }
 
 extension SearchVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFiltered {
-            return filteredData?.count ?? 0
+        if searchListPageType == .hotel {
+            if isFiltered {
+                return filteredData.0.count
+            }else {
+                return propertlyListResponse?.result?.count ?? 0
+            }
         }else {
-            return propertlyListResponse?.data?.propertySearch?.properties?.count ?? 0
+            if isFiltered {
+                return filteredData.1.count
+            }else {
+                return carRentalListResponse?.searchResults?.count ?? 0
+            }
+                
         }
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = searchTableView.dequeueReusableCell(withIdentifier: SearchListTVC.identifier, for: indexPath) as! SearchListTVC
-        if isFiltered {
-            cell.configureUI(property: filteredData?[indexPath.row])
+        if searchListPageType == .hotel {
+            if isFiltered {
+                cell.configureUI(result: filteredData.0[indexPath.row])
+            }else {
+                cell.configureUI(result: propertlyListResponse?.result?[indexPath.row])
+            }
         }else {
-            cell.configureUI(property: propertlyListResponse?.data?.propertySearch?.properties?[indexPath.row])
+            if isFiltered {
+                cell.configureCarRentalUI(carRentalResult: filteredData.1[indexPath.row])
+            }else {
+                cell.configureCarRentalUI(carRentalResult: carRentalListResponse?.searchResults?[indexPath.row])
+            }
         }
         
         return cell

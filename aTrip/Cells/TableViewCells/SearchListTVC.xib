@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="352" height="170"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marina Bay" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRe-wj-21g">
-                                        <rect key="frame" x="16" y="60" width="320" height="24"/>
+                                        <rect key="frame" x="16" y="60" width="320" height="53.666666666666657"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="EwC-23-ELn"/>
                                         </constraints>
@@ -34,15 +34,23 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGd-3P-5ab">
-                                        <rect key="frame" x="16" y="84" width="320" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="uL2-kP-0aD"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="52" translatesAutoresizingMaskIntoConstraints="NO" id="YyF-08-RSF">
+                                        <rect key="frame" x="16" y="129.66666666666666" width="320" height="20.333333333333343"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGd-3P-5ab">
+                                                <rect key="frame" x="0.0" y="0.0" width="134" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xqx-u4-C8L">
+                                                <rect key="frame" x="186" y="0.0" width="134" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cB-Ta-7oY">
                                         <rect key="frame" x="8" y="16" width="74" height="25"/>
                                         <subviews>
@@ -66,10 +74,11 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="0cB-Ta-7oY" firstAttribute="leading" secondItem="1OB-tS-MYY" secondAttribute="leading" constant="8" id="1uH-gG-sYp"/>
-                                    <constraint firstItem="BGd-3P-5ab" firstAttribute="leading" secondItem="1OB-tS-MYY" secondAttribute="leading" constant="16" id="1uv-gI-0hF"/>
+                                    <constraint firstItem="YyF-08-RSF" firstAttribute="top" secondItem="ZRe-wj-21g" secondAttribute="bottom" constant="16" id="5TL-bB-R6l"/>
+                                    <constraint firstAttribute="trailing" secondItem="YyF-08-RSF" secondAttribute="trailing" constant="16" id="Dig-hS-xZm"/>
+                                    <constraint firstItem="YyF-08-RSF" firstAttribute="leading" secondItem="1OB-tS-MYY" secondAttribute="leading" constant="16" id="Qio-ds-mym"/>
                                     <constraint firstItem="ZRe-wj-21g" firstAttribute="top" secondItem="1OB-tS-MYY" secondAttribute="top" constant="60" id="SMh-z3-eyE"/>
-                                    <constraint firstItem="BGd-3P-5ab" firstAttribute="top" secondItem="ZRe-wj-21g" secondAttribute="bottom" id="chA-ec-Mjy"/>
-                                    <constraint firstAttribute="trailing" secondItem="BGd-3P-5ab" secondAttribute="trailing" constant="16" id="mTW-OL-RZw"/>
+                                    <constraint firstAttribute="bottom" secondItem="YyF-08-RSF" secondAttribute="bottom" constant="20" symbolic="YES" id="mqy-oC-YHv"/>
                                     <constraint firstItem="0cB-Ta-7oY" firstAttribute="top" secondItem="1OB-tS-MYY" secondAttribute="top" constant="16" id="ny5-E2-7of"/>
                                     <constraint firstAttribute="trailing" secondItem="ZRe-wj-21g" secondAttribute="trailing" constant="16" id="pae-f9-u4h"/>
                                     <constraint firstItem="ZRe-wj-21g" firstAttribute="leading" secondItem="1OB-tS-MYY" secondAttribute="leading" constant="16" id="ptk-G6-lAG"/>
@@ -101,9 +110,11 @@
             <connections>
                 <outlet property="backBlackView" destination="1OB-tS-MYY" id="11d-wM-p1e"/>
                 <outlet property="backView" destination="Kvk-rc-mOF" id="Q1X-P4-cZw"/>
+                <outlet property="leftLabel" destination="BGd-3P-5ab" id="yFt-PB-hIb"/>
+                <outlet property="mainLabel" destination="MeJ-YL-YPA" id="1W9-aB-2kl"/>
                 <outlet property="nameLabel" destination="ZRe-wj-21g" id="JGF-ay-Ehb"/>
                 <outlet property="orangeBack" destination="0cB-Ta-7oY" id="3Mh-Ca-3IC"/>
-                <outlet property="priceLabel" destination="BGd-3P-5ab" id="NS5-qz-806"/>
+                <outlet property="priceLabel" destination="Xqx-u4-C8L" id="JsZ-j8-yaa"/>
                 <outlet property="searchImage" destination="xDM-84-fib" id="rI2-lj-vRX"/>
             </connections>
             <point key="canvasLocation" x="151.14503816793894" y="36.619718309859159"/>

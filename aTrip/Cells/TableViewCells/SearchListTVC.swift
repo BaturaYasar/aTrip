@@ -8,6 +8,8 @@
 import UIKit
 import Kingfisher
 
+
+
 class SearchListTVC: UITableViewCell {
 
     @IBOutlet weak var orangeBack: UIView!
@@ -15,7 +17,9 @@ class SearchListTVC: UITableViewCell {
     @IBOutlet weak var backBlackView: UIView!
     @IBOutlet weak var searchImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var leftLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var mainLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,21 +32,34 @@ class SearchListTVC: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
-    func configureUI(property:Property?) {
-        nameLabel.text = property?.name
-        let formattedPrice = property?.price?.displayMessages?.first?.lineItems?.first?.price?.formatted
-        if formattedPrice == nil {
-            priceLabel.text = "price is unknown at the moment"
-        }else {
-            priceLabel.text = formattedPrice
-        }
-        if let url = URL(string: property?.propertyImage?.image?.url ?? ""){
+    func configureCarRentalUI(carRentalResult:SearchResult?) {
+        orangeBack.isHidden = true
+        nameLabel.text = carRentalResult?.supplierInfo?.name
+        let allPrices = carRentalResult?.pricingInfo
+        priceLabel.text = "Price: \(allPrices?.price ?? 0.0) \(allPrices?.currency ?? "")"
+        leftLabel.text = "Car: \(carRentalResult?.vehicleInfo?.vName ?? "")"
+        if let url = URL(string: carRentalResult?.vehicleInfo?.imageURL ?? ""){
             searchImage.setImage(url: url)
         }else {
             searchImage.image = nil
         }
-        
+    }
+    
+    func configureUI(result:DataResult?) {
+        nameLabel.text = result?.hotelName
+        let allInclusiveAmount = result?.compositePriceBreakdown?.allInclusiveAmount
+        priceLabel.text = "Min Price: \(allInclusiveAmount?.value ?? 0.0) \(allInclusiveAmount?.currency ?? "")"
+        let score = result?.reviewScore
+        if score == nil {
+            leftLabel.text = "price is unknown at the moment"
+        }else {
+            leftLabel.text = "Score: \(score ?? 0.0)"
+        }
+        if let url = URL(string: result?.mainPhotoURL ?? ""){
+            searchImage.setImage(url: url)
+        }else {
+            searchImage.image = nil
+        }
     }
     
     func makeCorners() {

@@ -19,11 +19,18 @@ class MainCollectionVC: UICollectionViewCell {
         backView.makeCornerRadius()
         imageCell.makeCornerRadius()
     }
-    
-    func setupUI() {
-        articleLabel.text = "Beautiful Alley Scene in Old Town in Europe at Sunset"
-        categoryLabel.text = "EXPERIENCE"
+   
+  
+    func configureUI(article: Article?) {
+        articleLabel.text = article?.title ?? ""
+        if let url = URL(string: article?.imageUrl ?? "") {
+            imageCell.setImage(url: url)
+        }else {
+            imageCell.image = nil
+        }
+        
     }
+    
     
     
 

@@ -8,28 +8,36 @@
 import Foundation
 import Moya
 
+
+
 enum PropertyAPI {
-    case propertyList(request:PropertyListRequest)
+    case propertyList(request: PropertyListRequest)
+    case carRentalList(request: CarRentalRequest)
 }
 
 extension PropertyAPI:TargetType {
     var baseURL: URL {
-        guard let url = URL(string: "https://hotels4.p.rapidapi.com") else {fatalError() }
+        guard let url = URL(string: "https://booking-com.p.rapidapi.com") else {fatalError() }
         return url
     }
     
     var path: String {
         switch self {
         case .propertyList:
-            return "properties/v2/list"
+            return "v2/hotels/search"
+        case .carRentalList:
+            return "v1/car-rental/search"
         }
     }
     
     var method: Moya.Method {
         switch self {
         case .propertyList:
-            return .post
+            return .get
+        case .carRentalList:
+            return .get
         }
+        
     }
     
     var sampleData: Data {
@@ -38,16 +46,17 @@ extension PropertyAPI:TargetType {
     
     var task: Moya.Task {
         switch self {
-        case .propertyList(let req):
-            return .requestJSONEncodable(req)
+        case let .propertyList(req):
+            return req.urlEncodedQueryString
+        case .carRentalList(let req):
+            return req.urlEncodedQueryString
         }
     }
     
     var headers: [String : String]? {
         let headers = [
-            "content-type": "application/json",
             "X-RapidAPI-Key": "4d0d5ea12cmsh428363f07a05d6bp1a6fd8jsnc7eaa04c8974",
-            "X-RapidAPI-Host": "hotels4.p.rapidapi.com"
+            "X-RapidAPI-Host": "booking-com.p.rapidapi.com"
         ]
         return headers
         

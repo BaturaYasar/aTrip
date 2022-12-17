@@ -47,14 +47,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="63" height="34"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="airplane.departure" catalog="system" cornerStyle="dynamic">
+                                        <buttonConfiguration key="configuration" style="plain" image="car" catalog="system" cornerStyle="dynamic">
                                             <backgroundConfiguration key="background" cornerRadius="18">
                                                 <color key="backgroundColor" red="0.72313150612994881" green="0.2374493643312735" blue="0.19678503397180147" alpha="0.89685947847682124" colorSpace="custom" customColorSpace="displayP3"/>
                                             </backgroundConfiguration>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="flightButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H1q-Be-eYL"/>
-                                            <segue destination="RBE-pX-bLe" kind="show" id="huv-f2-Jc7"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VAD-8l-O7I">
@@ -68,8 +67,7 @@
                                             </backgroundConfiguration>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="hotelButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ikm-j6-mEn"/>
-                                            <segue destination="RDE-cy-pYn" kind="show" id="4D3-9S-5du"/>
+                                            <action selector="leftButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Kp-et-8gD"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -169,10 +167,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="U4v-Sa-2Dc">
-                                <rect key="frame" x="16" y="134" width="209.33333333333334" height="45"/>
+                                <rect key="frame" x="16" y="134" width="272.66666666666669" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="une-OF-caq">
-                                        <rect key="frame" x="0.0" y="0.0" width="100.66666666666667" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="132.33333333333334" height="45"/>
                                         <color key="tintColor" red="1" green="0.23258557360000001" blue="0.19512251950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="house.and.flag" catalog="system" cornerStyle="dynamic">
@@ -192,13 +190,13 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7eB-BO-4Id">
-                                        <rect key="frame" x="108.66666666666666" y="0.0" width="100.66666666666666" height="45"/>
+                                        <rect key="frame" x="140.33333333333331" y="0.0" width="132.33333333333331" height="45"/>
                                         <color key="tintColor" red="1" green="0.23258557360000001" blue="0.19512251950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="airplane.arrival" catalog="system" cornerStyle="dynamic">
+                                        <buttonConfiguration key="configuration" style="plain" image="car" catalog="system" cornerStyle="dynamic">
                                             <backgroundConfiguration key="background" cornerRadius="18"/>
                                             <attributedString key="attributedTitle">
-                                                <fragment content="Flight">
+                                                <fragment content="Rent a Car">
                                                     <attributes>
                                                         <font key="NSFont" size="16" name="Helvetica"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -207,7 +205,7 @@
                                             </attributedString>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="searchFlightButtonTapped:" destination="HLM-6r-xhZ" eventType="touchUpInside" id="WzP-SX-dat"/>
+                                            <action selector="searchRentingCarButtonTapped:" destination="HLM-6r-xhZ" eventType="touchUpInside" id="emd-09-vW9"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -268,19 +266,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="56o-FH-8uz">
-                                <rect key="frame" x="16" y="102" width="361" height="667"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lht-6g-Fk3">
+                                <rect key="frame" x="0.0" y="94" width="393" height="675"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="V1G-lA-gU2">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fxv-gn-HRQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="fxv-gn-HRQ" firstAttribute="trailing" secondItem="56o-FH-8uz" secondAttribute="trailing" constant="16" id="6SH-vQ-w1F"/>
-                            <constraint firstItem="56o-FH-8uz" firstAttribute="leading" secondItem="fxv-gn-HRQ" secondAttribute="leading" constant="16" id="Jbo-v2-l6E"/>
-                            <constraint firstItem="56o-FH-8uz" firstAttribute="top" secondItem="6Tc-yF-VAh" secondAttribute="bottom" constant="8" id="LOg-Tb-cK5"/>
+                            <constraint firstItem="lht-6g-Fk3" firstAttribute="top" secondItem="6Tc-yF-VAh" secondAttribute="bottom" id="3jO-xy-q1a"/>
+                            <constraint firstItem="lht-6g-Fk3" firstAttribute="trailing" secondItem="fxv-gn-HRQ" secondAttribute="trailing" id="5qK-vG-Jja"/>
+                            <constraint firstItem="lht-6g-Fk3" firstAttribute="leading" secondItem="fxv-gn-HRQ" secondAttribute="leading" id="DFa-Uq-A1u"/>
+                            <constraint firstItem="lht-6g-Fk3" firstAttribute="bottom" secondItem="fxv-gn-HRQ" secondAttribute="bottom" id="Nfr-Y6-7Cx"/>
                             <constraint firstItem="fxv-gn-HRQ" firstAttribute="trailing" secondItem="6Tc-yF-VAh" secondAttribute="trailing" constant="16" id="UFG-Mz-jWc"/>
-                            <constraint firstItem="fxv-gn-HRQ" firstAttribute="bottom" secondItem="56o-FH-8uz" secondAttribute="bottom" id="VYt-nW-N5t"/>
                             <constraint firstItem="6Tc-yF-VAh" firstAttribute="top" secondItem="fxv-gn-HRQ" secondAttribute="top" id="qLP-dD-mVm"/>
                             <constraint firstItem="6Tc-yF-VAh" firstAttribute="leading" secondItem="fxv-gn-HRQ" secondAttribute="leading" constant="16" id="u1E-Cu-JhC"/>
                         </constraints>
@@ -288,77 +293,13 @@
                     <tabBarItem key="tabBarItem" title="" image="calendar" catalog="system" id="0k0-XE-g4V"/>
                     <navigationItem key="navigationItem" id="ecP-na-jRs"/>
                     <connections>
-                        <outlet property="bookmarksTableView" destination="56o-FH-8uz" id="m2i-qt-qsc"/>
                         <outlet property="bookmarksTitleLabel" destination="6Tc-yF-VAh" id="6td-OB-F7Y"/>
+                        <outlet property="collectionView" destination="lht-6g-Fk3" id="Jap-XY-qVd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MTW-v1-IG3" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2541" y="704"/>
-        </scene>
-        <!--Hotel-->
-        <scene sceneID="1uA-Gv-cVM">
-            <objects>
-                <viewController storyboardIdentifier="HotelVC" id="RDE-cy-pYn" customClass="HotelVC" customModule="aTrip" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2BN-20-nSs">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="AjY-tf-GKn">
-                                <rect key="frame" x="16" y="111" width="361" height="741"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Wt0-uE-Lwc"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Wt0-uE-Lwc" firstAttribute="trailing" secondItem="AjY-tf-GKn" secondAttribute="trailing" constant="16" id="Dih-YW-qrH"/>
-                            <constraint firstItem="AjY-tf-GKn" firstAttribute="leading" secondItem="Wt0-uE-Lwc" secondAttribute="leading" constant="16" id="Mc8-08-PJd"/>
-                            <constraint firstItem="AjY-tf-GKn" firstAttribute="top" secondItem="Wt0-uE-Lwc" secondAttribute="top" constant="8" id="Uzb-zR-QP9"/>
-                            <constraint firstAttribute="bottom" secondItem="AjY-tf-GKn" secondAttribute="bottom" id="m95-fL-v0E"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="calendar" catalog="system" id="Tuz-SI-ekX"/>
-                    <navigationItem key="navigationItem" title="Hotel" id="zLO-Iw-KmN"/>
-                    <connections>
-                        <outlet property="hotelTableView" destination="AjY-tf-GKn" id="ulJ-Pe-o9M"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kWt-TU-nIq" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1351.9083969465648" y="1455.6338028169014"/>
-        </scene>
-        <!--Flight-->
-        <scene sceneID="BqN-eW-z0l">
-            <objects>
-                <viewController storyboardIdentifier="FlightVC" id="RBE-pX-bLe" customClass="FlightVC" customModule="aTrip" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wVx-fY-lB9">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nRp-aH-fo5">
-                                <rect key="frame" x="16" y="111" width="361" height="741"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="I34-io-0xh"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="nRp-aH-fo5" firstAttribute="leading" secondItem="I34-io-0xh" secondAttribute="leading" constant="16" id="3Lq-z6-a95"/>
-                            <constraint firstItem="I34-io-0xh" firstAttribute="trailing" secondItem="nRp-aH-fo5" secondAttribute="trailing" constant="16" id="bSj-i3-87T"/>
-                            <constraint firstAttribute="bottom" secondItem="nRp-aH-fo5" secondAttribute="bottom" id="mIu-4p-Ccm"/>
-                            <constraint firstItem="nRp-aH-fo5" firstAttribute="top" secondItem="I34-io-0xh" secondAttribute="top" constant="8" id="zwO-Fv-Ihv"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="calendar" catalog="system" id="eTO-6J-rwA"/>
-                    <navigationItem key="navigationItem" title="Flight" id="fDt-t2-mWU"/>
-                    <connections>
-                        <outlet property="flightTableView" destination="nRp-aH-fo5" id="eK1-rQ-PZO"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zha-rm-1Ze" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="580.91603053435108" y="1455.6338028169014"/>
+            <point key="canvasLocation" x="2539.6946564885493" y="703.52112676056345"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xJi-Lx-gew">
@@ -383,9 +324,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="airplane.arrival" catalog="system" width="128" height="101"/>
-        <image name="airplane.departure" catalog="system" width="128" height="84"/>
         <image name="calendar" catalog="system" width="128" height="107"/>
+        <image name="car" catalog="system" width="128" height="95"/>
         <image name="homeImage" width="666" height="668"/>
         <image name="homekit" catalog="system" width="128" height="104"/>
         <image name="house.and.flag" catalog="system" width="128" height="84"/>

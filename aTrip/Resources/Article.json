@@ -1,0 +1,23 @@
+{
+    "articles":[{
+        "id": 1,
+        "title":"Bir şehri tanımaya nereden başlanır?",
+        "desc":"Bu sorunun cevabı tamamen bizim bir şehrinasıl algıladığımızla ilgilidir. Şehir bana nerdengeliyorsa ben de ona oradan bakarım.Demek istediğim şudur: Biri bir şehre gidiyor, dönüşte soruyorlar, nasıl bir yerdi diye. Diyor ki: “Çok güzel bir şehirdi, eğlence yerleri, restoranları, kafeleri, gezmekle tükenmez turistik yerleri, müzeleri on numaraydı. Sabahlara kadar eğlenceye akıyorsun, âlem süperdi…Bir gün başka biri daha gidiyor aynı şehre, ona da soruyorlar nasıldı diye. O da şöyle cevaplıyor: “Çok güzel bir şehirdi, camilerine bayıldım. Müezzinlerin ezan okuyuşu muhteşemdi. Adım başı, her yerde türbeler var, o mübareklerin mekânlarını görmen lazım. Şehir âdeta şehitler ve gaziler yatağı. Her vakit namazı farklı camilerde kıldık, evliya ziyaretleri, tarihi mekân gezileri, atalarımızın bıraktığı muazzam sanat eserleri anlatılır gibi değildi…” Bu şehir Müslüman şehri değil de başka bir din ve medeniyete ait bir şehir de olsa sonuç değişmezdi. Bu sefer orada o şehrin medeniyetinin maneviyatı ve derinliği dikkate sunulurdu.",
+        "imageUrl":"https://a.cdn-hotels.com/gdcs/production6/d781/3bae040b-2afb-4b11-9542-859eeb8ebaf1.jpg"
+    },{
+        "id": 2,
+        "desc":"Zamanda saklı bir mekan: Sirkeci Garı",
+        "title":"Mekân üzerine yazılmış belki de en güzel metinlerden birisi olan bu başyapıtı hafızamızda tutarak, İstanbul’un kalbine, Sirkeci Garı’na, denizi arkamıza alarak adım atıyoruz. Dünya açılan, sefere başlayan ilk trenin dönemin emperyal gücü İngilizler tarafından bulunması şaşırtıcı bir durum olmasa gerek. George Stephenson, yalnızca yolcu ve yük taşıyan dünyanın ilk demiryolu taşımacılığını, İskoçya’daki Darlingthon ile Stockton arasında gerçekleştirdiğinde tarihler 27 Eylül 1825’i gösteriyordu. Bu, dönemin belki de en önemli buluşlarından, gelişmişliğin simgelerinden birisi olan buharlı lokomotifin de habercisi olmuştur. İş bu trenlerin evi, barınağı, soluk aldığı yerler olan garların ilki isi, yine güneşin batmadığı ülke olan İngiltere’nin Manchester kasabasında (Manchester’ın kasaba olmaktan kurtularak büyükşehir olması 1853’te mümkün olabilmişti),1830’da açılan Liverpool Road Tren Garı’dır.",
+        "imageUrl":"https://www.indyturk.com/sites/default/files/styles/1368x911/public/article/main_image/2021/11/03/790286-1465325704.jpg?itok=P6oXpO1l"
+    },{
+        "id": 3,
+        "desc":"Saklı kalmış bir mücevher Bologna!",
+        "title":"Şehrin ana ve en büyük meydanı olan Piazza Maggiore,Bologna’nın sembolü olan Neptün Çeşmesi, üniversite bölgesi ve Via Rizzoli görülmesi gereken yerlerin başında geliyor. Fakat şehrin esas simgeleri ise kuleleri diyebiliriz. Asinelli ve Garisenda kuleleri! Bunlar 12. yüzyılda yapılmış ve Bologna’nın baş tacı olmuş. Modern zamanlarda bilim insanları deneyler için kullanmış bu kuleleri. Ortaçağ’da ise güç sembolü olarak görülüyormuş kuleler. Bologna’yı diğer İtalyan şehirlerinden ayıran en önemli özellik toplamı ortalama 40 km’yi bulan portikolar! Binalar sağlı, sollu kemerlerle kaplı ve bu kemerlerin altında dükkânlar, kafeler ve restoranlar bulunuyor. Bu yürüyüş yollarına, geçitlere portiko deniyor. Yani siz Bologna’da yağmurlu bir günde yürürken şemsiyeye hiç ihtiyaç duymuyorsunuz. Eskiden portikoların altından atlı arabalar rahatça geçebiliyormuş. Strada Maggiore’de orijinal tahta portikoları görebilirsiniz; bunlar freskler ve aile armalarıyla kaplılar. Zaman içinde tahta olan portikolar taşa dönüştürülmüş.",
+        "imageUrl":"https://italyadaegitim.com/wp-content/uploads/2020/12/bologna-780x470.jpg"
+    },{
+        "id": 4,
+        "desc":"Barcelona'nın renklerini keşfedin! La Merce Festivali",
+        "title":"Şehrin “koruyucu azizesi” Mare de Deu de la Mercè’ye ithaf olunan festivalin köklü bir geçmişi var. 1687 yılında veba salgınının pençesine düşen şehrin valisi Consell de Cent’in azizeden yardım istemesi sonucu hastalıktan kurtulur. Halk, o tarihten itibaren azizeye şükranlarını sunmak adına festival düzenlemeye başlar. 1902’de organize hale getirilip şu anki halini alan festival, diğer bir yandan yazın bitişiyle sonbaharın gelişini simgeliyor. En büyük etkinliklerin yapıldığı gün Fiesta Mayor olarak adlandırılıyor. Bir hafta boyunca 600 kadar etkinlikle hem göz hem kulak ziyafeti sunan La Merce, Plaça d’Espanya’da 45 dakika süren büyüleyici bir havai fişek gösterisiyle sonlandırılıyor.",
+        "imageUrl":"https://www.barcelonapopolsku.pl/wp-content/uploads/2020/10/la-merce-1-scaled.jpg"
+    }]
+}
